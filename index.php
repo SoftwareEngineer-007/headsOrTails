@@ -43,10 +43,22 @@ class Game {
         }
     }
 
+    public function winner()
+    {
+        if($this->player1->coins > $this->player2->coins) {
+            return $this->player1;
+        } else {
+            return $this->player2;
+        }
+    }
+
     public function end()
     {
         echo <<<EOT
             Game over.
+
+            Winner: {$this->winner()->name}
+            
         EOT;
     }
 }
