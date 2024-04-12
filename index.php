@@ -23,11 +23,35 @@ class Game {
 
     public function start()
     {
-        
+        while(true) {
+            // flip the coin
+            $flip = rand(0, 1) ? "heads" : "tails";
+
+            // determination of the winner
+            if($flip == "heads") {
+                $this->player1->coins++;
+                $this->player2->coins--;
+            } else {
+                $this->player1->coins--;
+                $this->player2->coins++;
+            }
+
+            // the game is over if someone has 0 coins left
+            if($this->player1->coins == 0 || $this->player2->coins == 0) {
+                return $this->end();
+            }
+        }
+    }
+
+    public function end()
+    {
+        echo <<<EOT
+            Game over.
+        EOT;
     }
 }
 
-new Game(
+$game = new Game(
     new Player("Batman", 100),
     new Player("Robin", 100)
 );
