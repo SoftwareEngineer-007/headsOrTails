@@ -20,6 +20,11 @@ class Game {
         $this->player1 = $player1;
         $this->player2 = $player2;
     }
+
+    public function start()
+    {
+        
+    }
 }
 
 new Game(
