@@ -14,6 +14,7 @@ class Player {
 class Game {
     protected $player1;
     protected $player2;
+    protected $flips = 1;
 
     public function __construct(Player $player1, Player $player2)
     {
@@ -40,6 +41,9 @@ class Game {
             if($this->player1->coins == 0 || $this->player2->coins == 0) {
                 return $this->end();
             }
+
+            $this->flips++;
+
         }
     }
 
@@ -58,7 +62,9 @@ class Game {
             Game over.
 
             Winner: {$this->winner()->name}
-            
+
+            Number of throws: {$this->flips}
+
         EOT;
     }
 }
